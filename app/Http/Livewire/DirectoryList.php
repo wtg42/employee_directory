@@ -8,6 +8,7 @@ class DirectoryList extends Component
 {
     public function render()
     {
-        return view('livewire.directory-list');
+        $userList = [];
+        return view('livewire.directory-list', ['userList' => $userList]);
     }
 }
