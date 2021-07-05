@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Directory extends Model
+class Department extends Model
 {
     use HasFactory;
 
-    // protected $table = 'directory';
-    // function department()
+    // protected $table = 'departments';
+
+    // function directory()
     // {
-    //     return $this->belongsTo(Departments::class);
+    //     // return $this->hasMany(Directory::class);
     // }
 }

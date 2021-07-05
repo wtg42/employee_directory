@@ -15,6 +15,12 @@ class CreateDirectoriesTable extends Migration
     {
         Schema::create('directories', function (Blueprint $table) {
             $table->id();
+            $table->string('chinese_name', 30);
+            $table->string('english_name', 30);
+            $table->string('phone', 20);
+            $table->integer('ext');
+            $table->string('email', 50)->unique();
+            $table->bigInteger('department_id')->index();
             $table->timestamps();
         });
     }
