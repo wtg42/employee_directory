@@ -9,10 +9,10 @@ class Department extends Model
 {
     use HasFactory;
 
-    // protected $table = 'departments';
+    protected $table = 'departments';
 
-    // function directory()
-    // {
-    //     // return $this->hasMany(Directory::class);
-    // }
+    function directory()
+    {
+        // return $this->hasMany(Directory::class);
+    }
 }

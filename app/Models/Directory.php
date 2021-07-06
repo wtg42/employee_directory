@@ -9,9 +9,19 @@ class Directory extends Model
 {
     use HasFactory;
 
-    // protected $table = 'directory';
-    // function department()
-    // {
-    //     return $this->belongsTo(Departments::class);
-    // }
+    protected $table = 'directories';
+
+    protected $fillable = [
+        'chinese_name',
+        'english_name',
+        'phone',
+        'ext',
+        'email',
+        'department_id'
+    ];
+
+    function department()
+    {
+        return $this->belongsTo(Departments::class);
+    }
 }
