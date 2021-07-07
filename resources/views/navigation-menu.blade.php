@@ -17,7 +17,12 @@
                     </x-jet-nav-link> --}}
 
                     <x-jet-nav-link href="{{ route('directory') }}" :active="request()->routeIs('directory')">
-                        {{ __('Eeployee Directory') }}
+                        {{ __('通訊錄列表') }}
+                    </x-jet-nav-link>
+
+                    {{-- route reource restful uri 請用 `.` 代替 `/` --}}
+                    <x-jet-nav-link href="{{ route('directory.create') }}" :active="request()->routeIs('directory.create')">
+                        {{ __('新增通訊資料') }}
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -143,7 +148,11 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('directory') }}" :active="request()->routeIs('directory')">
-                {{ __('Eeployee Directory') }}
+                {{ __('通訊錄列表') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="{{ route('directory.create') }}" :active="request()->routeIs('directory.create')">
+                {{ __('新增通訊資料') }}
             </x-jet-responsive-nav-link>
         </div>
 

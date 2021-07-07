@@ -58,7 +58,8 @@ class DirectoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        // 修改聯絡人表單
+        return view('dashboard-directory-edit');
     }
 
     /**
