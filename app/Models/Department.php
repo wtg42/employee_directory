@@ -13,6 +13,6 @@ class Department extends Model
 
     function directory()
     {
-        // return $this->hasMany(Directory::class);
+        return $this->hasMany(Directory::class);
     }
 }

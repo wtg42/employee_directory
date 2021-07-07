@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DirectoryController;
 use App\Http\Controllers\DepartmentController;
 
 /*
@@ -13,7 +14,7 @@ use App\Http\Controllers\DepartmentController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('/departments', DepartmentController::class);
+Route::resource('/directory', DirectoryController::class);
 
 Route::get('/', function () {
     // return view('welcome');

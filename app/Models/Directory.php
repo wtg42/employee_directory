@@ -22,6 +22,6 @@ class Directory extends Model
 
     function department()
     {
-        return $this->belongsTo(Departments::class);
+        return $this->belongsTo(Department::class);
     }
 }

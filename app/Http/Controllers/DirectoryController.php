@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Directory;
 use Illuminate\Http\Request;
 
-class DepartmentController extends Controller
+class DirectoryController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * Dashboard 通訊錄列表 tab
+     *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        // return view('dashboard-directory-list');
+        // 聯絡人列表
+        return view('dashboard-directory-list');
     }
 
     /**
@@ -24,7 +24,8 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        // return view('dashboard-directory-create');
+        // 新增聯絡人表單
+        return view('dashboard-directory-create');
     }
 
     /**

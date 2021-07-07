@@ -5,19 +5,22 @@
             <tr>
                 <th
                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                    Name</th>
+                    中文姓名</th>
+                <th
+                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    英文姓名</th>
                 <th
                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Email</th>
                 <th
                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                    Message</th>
+                    電話</th>
                 <th
                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                    Date On Site</th>
+                    分機</th>
                 <th
                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                    Remove Item</th>
+                    部門</th>
             </tr>
         </thead>
         <tbody>
