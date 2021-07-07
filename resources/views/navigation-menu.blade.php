@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('directory') }}">
+                    <a href="{{ route('directory.index') }}">
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
@@ -16,13 +16,18 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link> --}}
 
-                    <x-jet-nav-link href="{{ route('directory') }}" :active="request()->routeIs('directory')">
+                    <x-jet-nav-link href="{{ route('directory.index') }}" :active="request()->routeIs('directory.index')">
                         {{ __('通訊錄列表') }}
                     </x-jet-nav-link>
 
                     {{-- route reource restful uri 請用 `.` 代替 `/` --}}
                     <x-jet-nav-link href="{{ route('directory.create') }}" :active="request()->routeIs('directory.create')">
                         {{ __('新增通訊資料') }}
+                    </x-jet-nav-link>
+
+                    {{-- route reource restful uri 請用 `.` 代替 `/` --}}
+                    <x-jet-nav-link href="{{ route('department.index') }}" :active="request()->routeIs('department.index')">
+                        {{ __('部門列表') }}
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -147,12 +152,16 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('directory') }}" :active="request()->routeIs('directory')">
+            <x-jet-responsive-nav-link href="{{ route('directory.index') }}" :active="request()->routeIs('directory.index')">
                 {{ __('通訊錄列表') }}
             </x-jet-responsive-nav-link>
 
             <x-jet-responsive-nav-link href="{{ route('directory.create') }}" :active="request()->routeIs('directory.create')">
                 {{ __('新增通訊資料') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="{{ route('department.index') }}" :active="request()->routeIs('department.index')">
+                {{ __('部門列表') }}
             </x-jet-responsive-nav-link>
         </div>
 

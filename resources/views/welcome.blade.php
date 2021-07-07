@@ -7,7 +7,7 @@
         <title>Laravel</title>
         <link rel="stylesheet" href="{{ mix('/css/app.css') }}" />
 
-        
+
     </head>
     <body class="h-screen overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
     <section class="flex flex-col md:flex-row h-screen items-center">
@@ -26,7 +26,7 @@
       <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">Log in to your account</h1>
 
       <form class="mt-6" action="#" method="POST">
-        <div>
+        {{-- <div>
           <label class="block text-gray-700">Email Address</label>
           <input type="email" name="" id="" placeholder="Enter Email Address" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
         </div>
@@ -35,7 +35,7 @@
           <label class="block text-gray-700">Password</label>
           <input type="password" name="" id="" placeholder="Enter Password" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                 focus:bg-white focus:outline-none" required>
-        </div>
+        </div> --}}
 
         <div class="text-right mt-2">
           <a href="#" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</a>

@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Directory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DepartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * Dashboard 通訊錄列表 tab
+     * Dashboard 部門列表 tab
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        // return view('dashboard-directory-list');
+        if (Auth::check()) {
+            return view('dashboard-department-list');
+        }
+        return redirect('/')->setStatusCode(200);
     }
 
     /**
@@ -24,7 +27,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        // return view('dashboard-directory-create');
+        // return view('dashboard-department-create');
     }
 
     /**

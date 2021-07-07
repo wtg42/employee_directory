@@ -1,6 +1,6 @@
 <div class="rounded-t-xl overflow-hidden bg-gradient-to-r from-light-blue-50 to-light-blue-100 p-10">
     {{-- Do your work, then step back. --}}
-    <table class="min-w-full leading-normal table-fixed">
+    <table class="min-w-full leading-normal table-auto">
         <thead>
             <tr>
                 <th
@@ -30,12 +30,12 @@
             {{-- 可以改用@each('view.name.compoment', $userList, 'customer', 'view.empty.name.component') --}}
             @forelse($directories as $info)
             <tr>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5">
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-2/5">
                     <p class="text-gray-900 whitespace-no-wrap text-center">
                         {{ $info->chinese_name }}
                     </p>
                 </td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5">
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-2/5">
                     <p class="text-gray-900 whitespace-no-wrap text-center">
                         {{ $info->english_name }}
                     </p>
@@ -50,7 +50,7 @@
                         {{ $info->phone }}
                     </p>
                 </td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-2/5">
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5">
                     <p class="text-gray-900 whitespace-no-wrap text-center">
                         {{ $info->ext }}
                     </p>
@@ -60,7 +60,7 @@
                         {{ $info->department_id }}
                     </p>
                 </td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-2/5">
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5">
                     <button wire:click="removeFromTableRow({{ $info->id }})"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Remove
