@@ -29,11 +29,17 @@
                     <x-jet-nav-link href="{{ route('department.index') }}" :active="request()->routeIs('department.index')">
                         {{ __('部門列表') }}
                     </x-jet-nav-link>
+
+                    {{-- route reource restful uri 請用 `.` 代替 `/` --}}
+                    <x-jet-nav-link href="{{ route('department.create') }}" :active="request()->routeIs('department.create')">
+                        {{ __('新增部門資料') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
+                @if(Auth::check()) {{-- 某些頁面不需要登入 --}}
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ml-3 relative">
                         <x-jet-dropdown align="right" width="60">
@@ -82,11 +88,12 @@
                         </x-jet-dropdown>
                     </div>
                 @endif
-
+                @endif
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
+                            @if(Auth::check())
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                 <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                                     <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
@@ -102,6 +109,7 @@
                                     </button>
                                 </span>
                             @endif
+                            @endif
                         </x-slot>
 
                         <x-slot name="content">
@@ -113,11 +121,12 @@
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
-
+                            @if(Auth::check())
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
                                     {{ __('API Tokens') }}
                                 </x-jet-dropdown-link>
+                            @endif
                             @endif
 
                             <div class="border-t border-gray-100"></div>
@@ -163,10 +172,15 @@
             <x-jet-responsive-nav-link href="{{ route('department.index') }}" :active="request()->routeIs('department.index')">
                 {{ __('部門列表') }}
             </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="{{ route('department.create') }}" :active="request()->routeIs('department.create')">
+                {{ __('新增部門資料') }}
+            </x-jet-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
+            @if(Auth::check())
             <div class="flex items-center px-4">
                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                     <div class="flex-shrink-0 mr-3">
@@ -174,11 +188,13 @@
                     </div>
                 @endif
 
+
                 <div>
                     <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
                     <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
                 </div>
             </div>
+            @endif
 
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
@@ -186,10 +202,12 @@
                     {{ __('Profile') }}
                 </x-jet-responsive-nav-link>
 
+                @if(Auth::check())
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                     <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
                         {{ __('API Tokens') }}
                     </x-jet-responsive-nav-link>
+                @endif
                 @endif
 
                 <!-- Authentication -->
@@ -204,6 +222,7 @@
                 </form>
 
                 <!-- Team Management -->
+                @if(Auth::check())
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="border-t border-gray-200"></div>
 
@@ -232,6 +251,7 @@
                     @foreach (Auth::user()->allTeams() as $team)
                         <x-jet-switchable-team :team="$team" component="jet-responsive-nav-link" />
                     @endforeach
+                @endif
                 @endif
             </div>
         </div>

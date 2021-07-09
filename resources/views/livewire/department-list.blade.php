@@ -5,10 +5,10 @@
             <tr>
                 <th
                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                    中文姓名</th>
+                    編號</th>
                 <th
                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                    英文姓名</th>
+                    部門名稱</th>
                 <th
                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     REMOVE ITEM</th>
@@ -19,14 +19,20 @@
             @forelse($departments as $info)
             <tr>
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-2/5">
-                    <p class="text-gray-900 whitespace-no-wrap text-center">
-                        {{ $info->chinese_name }}
+                    <p class="text-gray-900 whitespace-nowrap text-center">
+                        {{ $info->id }}
                     </p>
                 </td>
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-2/5">
-                    <p class="text-gray-900 whitespace-no-wrap text-center">
-                        {{ $info->english_name }}
+                    <p class="text-gray-900 whitespace-nowrap text-center">
+                        {{ $info->dept_name }}
                     </p>
+                </td>
+                <td class="text-center px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5">
+                    <button wire:click="removeFromTableRow({{ $info->id }})"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Remove
+                    </button>
                 </td>
             </tr>
             @empty

@@ -18,7 +18,13 @@ use App\Http\Controllers\DepartmentController;
 Route::middleware(['auth:sanctum', 'verified'])->resource('/department', DepartmentController::class);
 
 // 通訊錄頁面路由
-Route::resource('/directory', DirectoryController::class);
+Route::middleware(['auth:sanctum', 'verified'])->resource('/directory', DirectoryController::class, ['only' => [
+    'create'
+]]);
+
+Route::resource('/directory', DirectoryController::class, ['only' => [
+    'index'
+]]);
 
 
 

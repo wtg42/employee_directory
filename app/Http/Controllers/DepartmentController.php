@@ -14,10 +14,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            return view('dashboard-department-list');
-        }
-        return redirect('/')->setStatusCode(200);
+        return view('dashboard-department-list');
     }
 
     /**
@@ -27,7 +24,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        // return view('dashboard-department-create');
+        return view('dashboard-department-create');
     }
 
     /**

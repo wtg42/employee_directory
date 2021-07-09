@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Directory;
+use App\Models\Department;
 use Livewire\WithPagination;
 
 class DirectoryList extends Component
@@ -12,7 +13,9 @@ class DirectoryList extends Component
 
     public function render()
     {
-        $directories = Directory::paginate(2);
+        $directory = new Directory;
+        $directories = $directory->with('Department')->paginate(2);
+
         return view('livewire.directory-list', ['directories' => $directories]);
     }
 

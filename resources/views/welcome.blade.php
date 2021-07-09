@@ -17,15 +17,15 @@
     <img src="https://images.unsplash.com/photo-1623720274043-841b674a1a52?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max" alt="" class="w-full h-full object-cover">
   </div>
 
-  <div class="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:mx-0 md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
+  <div class="bg-white w-full md:max-w-md lg:max-w-full md:mx-0 md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
         flex items-center justify-center">
 
     <div class="w-full h-100">
 
 
-      <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">Log in to your account</h1>
+      <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">中華數位科技通訊錄系統</h1>
 
-      <form class="mt-6" action="#" method="POST">
+      <form class="mt-6" action="{{ route('login') }}" method="GET">
         {{-- <div>
           <label class="block text-gray-700">Email Address</label>
           <input type="email" name="" id="" placeholder="Enter Email Address" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
@@ -37,9 +37,9 @@
                 focus:bg-white focus:outline-none" required>
         </div> --}}
 
-        <div class="text-right mt-2">
+        {{-- <div class="text-right mt-2">
           <a href="#" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</a>
-        </div>
+        </div> --}}
 
         <button type="submit" class="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg
               px-4 py-3 mt-6">Log In</button>
@@ -57,8 +57,7 @@
             </div>
           </button> -->
 
-      <p class="mt-8">Need an account? <a href="#" class="text-blue-500 hover:text-blue-700 font-semibold">Create an
-              account</a></p>
+      <p class="mt-8">通訊錄查詢工具 <a href="{{ route('directory.index') }}" class="text-blue-500 hover:text-blue-700 font-semibold">通訊錄入口</a></p>
 
 
     </div>

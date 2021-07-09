@@ -30,37 +30,37 @@
             {{-- 可以改用@each('view.name.compoment', $userList, 'customer', 'view.empty.name.component') --}}
             @forelse($directories as $info)
             <tr>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-2/5">
-                    <p class="text-gray-900 whitespace-no-wrap text-center">
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-3/12">
+                    <p class="text-gray-900 whitespace-nowrap text-center">
                         {{ $info->chinese_name }}
                     </p>
                 </td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-2/5">
-                    <p class="text-gray-900 whitespace-no-wrap text-center">
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-3/12">
+                    <p class="text-gray-900 whitespace-nowrap text-center">
                         {{ $info->english_name }}
                     </p>
                 </td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5">
-                    <p class="text-gray-900 whitespace-no-wrap text-center">
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-3/12">
+                    <p class="text-gray-900 whitespace-nowrap text-center">
                         {{ $info->email }}
                     </p>
                 </td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-2/5">
-                    <p class="text-gray-900 whitespace-no-wrap text-center">
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-3/12">
+                    <p class="text-gray-900 whitespace-nowrap text-center">
                         {{ $info->phone }}
                     </p>
                 </td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5">
-                    <p class="text-gray-900 whitespace-no-wrap text-center">
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/12">
+                    <p class="text-gray-900 whitespace-nowrap text-center">
                         {{ $info->ext }}
                     </p>
                 </td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-2/5">
-                    <p class="text-gray-900 whitespace-no-wrap text-center">
-                        {{ $info->department_id }}
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-4/5">
+                    <p class="text-gray-900 whitespace-nowrap text-center">
+                        {{ $info->department->dept_name ?? 'none' }}
                     </p>
                 </td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5">
+                <td class="text-center px-5 py-5 border-b border-gray-200 bg-white text-sm w-3/12">
                     <button wire:click="removeFromTableRow({{ $info->id }})"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Remove

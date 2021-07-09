@@ -47,8 +47,11 @@
                         <label for="dept" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">部門</label>
                         <select wire:dirty.class="text-red-500" wire:model.lazy="dept" id="dept"
                             class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500">
-                            <option value="">請選擇</option>{{-- wire:model is only set or updated on change. 所以多一個選擇--}}
-                            <option value="1">RD</option>
+                            <option value="">請選擇</option>
+                            @foreach ($departments as $dept)
+                            {{-- wire:model is only set or updated on change. 所以多一個選擇--}}
+                            <option value="{{ $dept->id }}">{{ $dept->dept_name }}</option>
+                            @endforeach
                         </select>
                         @error('dept')<span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                     </div>

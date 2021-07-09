@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Directory;
+use App\Models\Department;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\QueryException;
 
@@ -43,7 +44,8 @@ class NewDirectoryForm extends Component
 
     public function render()
     {
-        return view('livewire.new-directory-form');
+        $departments = Department::all();
+        return view('livewire.new-directory-form', ['departments' => $departments]);
     }
 
     // Real-time Validation
@@ -57,6 +59,7 @@ class NewDirectoryForm extends Component
     {
         try {
             $validatedData = $this->validate();
+            // 寫入欄位
             $dirct = Directory::create([
                 'chinese_name' => $validatedData['chinese_name'],
                 'english_name' => $validatedData['english_name'],
@@ -68,7 +71,7 @@ class NewDirectoryForm extends Component
             $dirct->save();
         } catch (QueryException $e) {
             Log::error($e->getMessage());
-            session()->flash('success_message', '新增失敗，信箱是否重複。');
+            session()->flash('success_message', '新增失敗，信箱是否重複?('. $e->getCode() .')');
             return;
         }
 

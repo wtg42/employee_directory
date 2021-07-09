@@ -12,4 +12,10 @@ class DepartmentList extends Component
         $dept = Department::paginate(2);
         return view('livewire.department-list', ['departments' => $dept]);
     }
+
+    public function removeFromTableRow($removeID)
+    {
+        $contactUs = Department::find($removeID);
+        $contactUs->delete();
+    }
 }
