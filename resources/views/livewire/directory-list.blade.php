@@ -1,5 +1,9 @@
-<div class="rounded-t-xl overflow-hidden bg-gradient-to-r from-light-blue-50 to-light-blue-100 p-10">
+
+<div class="space-y-4 rounded-t-xl overflow-hidden bg-gradient-to-r from-light-blue-50 to-light-blue-100 p-10">
     {{-- Do your work, then step back. --}}
+
+    <x-jet-input wire:model="zh_name" type="text" class="max-w-md px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" placeholder="搜尋中文姓名" />
+
     <table class="min-w-full leading-normal table-auto">
         <thead>
             <tr>

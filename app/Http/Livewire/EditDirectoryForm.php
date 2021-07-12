@@ -72,7 +72,7 @@ class EditDirectoryForm extends Component
         try {
             $validatedData = $this->validate();
             // 寫入欄位
-            $dirct = Directory::where([['id', '=', $this->directoryID]])->update([
+            Directory::where([['id', '=', $this->directoryID]])->update([
                 'chinese_name' => $validatedData['chinese_name'],
                 'english_name' => $validatedData['english_name'],
                 'email' => $validatedData['email'],
@@ -83,7 +83,7 @@ class EditDirectoryForm extends Component
 
         } catch (QueryException $e) {
             Log::error($e->getMessage());
-            session()->flash('success_message', '更新失敗，信箱是否重複?(' . $e->getCode() . ')');
+            session()->flash('success_message', '更新失敗，信箱或姓名是否重複?(' . $e->getCode() . ')');
             return;
         }
 

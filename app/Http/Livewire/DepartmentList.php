@@ -9,7 +9,7 @@ class DepartmentList extends Component
 {
     public function render()
     {
-        $dept = Department::paginate(2);
+        $dept = Department::paginate(5);
         return view('livewire.department-list', ['departments' => $dept]);
     }
 

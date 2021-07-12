@@ -71,7 +71,7 @@ class NewDirectoryForm extends Component
             $dirct->save();
         } catch (QueryException $e) {
             Log::error($e->getMessage());
-            session()->flash('success_message', '新增失敗，信箱是否重複?('. $e->getCode() .')');
+            session()->flash('success_message', '新增失敗，信箱或姓名是否重複?('. $e->getCode() .')');
             return;
         }
 
