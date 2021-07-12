@@ -19,7 +19,7 @@ Route::middleware(['auth:sanctum', 'verified'])->resource('/department', Departm
 
 // 通訊錄頁面路由
 Route::middleware(['auth:sanctum', 'verified'])->resource('/directory', DirectoryController::class, ['only' => [
-    'create'
+    'create', 'edit',
 ]]);
 
 Route::resource('/directory', DirectoryController::class, ['only' => [

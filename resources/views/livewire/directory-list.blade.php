@@ -24,28 +24,31 @@
                 <th
                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     REMOVE ITEM</th>
+                <th
+                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    EDIT ITEM</th>
             </tr>
         </thead>
         <tbody>
             {{-- 可以改用@each('view.name.compoment', $userList, 'customer', 'view.empty.name.component') --}}
             @forelse($directories as $info)
             <tr>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-3/12">
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/12">
                     <p class="text-gray-900 whitespace-nowrap text-center">
                         {{ $info->chinese_name }}
                     </p>
                 </td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-3/12">
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-2/12">
                     <p class="text-gray-900 whitespace-nowrap text-center">
                         {{ $info->english_name }}
                     </p>
                 </td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-3/12">
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/12">
                     <p class="text-gray-900 whitespace-nowrap text-center">
                         {{ $info->email }}
                     </p>
                 </td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-3/12">
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/12">
                     <p class="text-gray-900 whitespace-nowrap text-center">
                         {{ $info->phone }}
                     </p>
@@ -55,15 +58,21 @@
                         {{ $info->ext }}
                     </p>
                 </td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-4/5">
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/12">
                     <p class="text-gray-900 whitespace-nowrap text-center">
                         {{ $info->department->dept_name ?? 'none' }}
                     </p>
                 </td>
-                <td class="text-center px-5 py-5 border-b border-gray-200 bg-white text-sm w-3/12">
+                <td class="text-center px-5 py-5 border-b border-gray-200 bg-white text-sm w-2/12">
                     <button wire:click="removeFromTableRow({{ $info->id }})"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Remove
+                        移除
+                    </button>
+                </td>
+                <td class="text-center px-5 py-5 border-b border-gray-200 bg-white text-sm w-2/12">
+                    <button wire:click="editFromTableRow({{ $info->id }})"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        編輯
                     </button>
                 </td>
             </tr>

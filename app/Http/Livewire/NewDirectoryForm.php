@@ -21,11 +21,11 @@ class NewDirectoryForm extends Component
 
     // form reuls 搭配 messages
     protected $rules = [
-        'chinese_name' => 'required|min:2',
-        'english_name' => 'required|min:2',
+        'chinese_name' => 'required|string|min:2',
+        'english_name' => 'required|string|min:2',
         'email'   => 'required|email',
         'phone'   => 'required|string|min:8',
-        'ext'     => 'required',
+        'ext'     => 'required|integer',
         'dept'    => 'required',
     ];
 

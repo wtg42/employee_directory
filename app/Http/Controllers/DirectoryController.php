@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Directory;
 use Illuminate\Http\Request;
 
 class DirectoryController extends Controller
@@ -53,13 +54,13 @@ class DirectoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $id  傳給 livewire form 預設資料
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         // 修改聯絡人表單
-        return view('dashboard-directory-edit');
+        return view('dashboard-directory-edit', ['directoryID' => $id]);
     }
 
     /**

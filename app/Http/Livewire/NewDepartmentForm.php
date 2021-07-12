@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Department;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Database\QueryException;
 
 class NewDepartmentForm extends Component
