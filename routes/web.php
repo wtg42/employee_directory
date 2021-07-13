@@ -26,6 +26,8 @@ Route::resource('/directory', DirectoryController::class, ['only' => [
     'index'
 ]]);
 
+// 看 log 入口
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
 
 Route::get('/', function () {

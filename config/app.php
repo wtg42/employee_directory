@@ -165,6 +165,8 @@ return [
         /*
          * Package Service Providers...
          */
+        // 看 log 服務
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 
         /*
          * Application Service Providers...
