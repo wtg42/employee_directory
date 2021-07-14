@@ -1,9 +1,12 @@
 
 <div class="space-y-4 rounded-t-xl overflow-hidden bg-gradient-to-r from-light-blue-50 to-light-blue-100 p-10">
     {{-- Do your work, then step back. --}}
-
-    <x-jet-input wire:model="zh_name" type="text" class="max-w-md px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" placeholder="搜尋中文姓名" />
-
+    <div>
+        <x-jet-input wire:model.debounce.500ms="zhNameOrPhone" wire:dirty.class="text-red-500"
+            type="text"
+            class="w-3/12 px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
+            placeholder="搜尋中文姓名或電話號碼" />
+    </div>
     <table class="min-w-full leading-normal table-auto">
         <thead>
             <tr>
@@ -36,7 +39,7 @@
         <tbody>
             {{-- 可以改用@each('view.name.compoment', $userList, 'customer', 'view.empty.name.component') --}}
             @forelse($directories as $info)
-            <tr>
+            <tr wire:loading.class.delay="opacity-50">{{-- 長時間搜尋等待改變畫面狀態。 --}}
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/12">
                     <p class="text-gray-900 whitespace-nowrap text-center">
                         {{ $info->chinese_name }}
@@ -82,8 +85,10 @@
             </tr>
             @empty
             <tr>
-                <td colspan="7" class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <p class="text-center">No data found.</p>
+                <td colspan="8" class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <div class="flex justify-center">
+                        <span>No data found.</span>
+                    </div>
                 </td>
             </tr>
             @endforelse

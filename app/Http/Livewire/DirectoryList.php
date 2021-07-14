@@ -9,7 +9,7 @@ use Livewire\WithPagination;
 class DirectoryList extends Component
 {
     // search input
-    public $zh_name;
+    public $zhNameOrPhone;
 
     use WithPagination;// livewire分頁用 沒加會變成reload分頁
 
@@ -17,8 +17,10 @@ class DirectoryList extends Component
     {
         $directory = new Directory;
         // $directories = $directory->where([['chinese_name', 'like', "%{$this->title}%"]])->with('Department')->paginate(5);
-        $directories = $directory->when(!empty($this->zh_name), function($query) {
-            return $query->where([['chinese_name', 'like', "%{$this->zh_name}%"]]);
+        $directories = $directory->when(!empty($this->zhNameOrPhone), function($query) {
+            return $query
+            ->where([['chinese_name', 'like', "%{$this->zhNameOrPhone}%"]])
+            ->orwhere([['phone', 'like', "%{$this->zhNameOrPhone}%"]]);
         })
         ->with('Department')
         ->paginate(5);
