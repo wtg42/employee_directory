@@ -22,8 +22,8 @@
 
     <div class="w-full h-100">
 
-
-      <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">中華數位科技通訊錄系統</h1>
+      <div class="flex justify-center"><x-SoftnextLogo class="h-12" /></div>
+      <h1 class="text-center text-xl md:text-2xl font-bold leading-tight mt-12">中華數位科技通訊錄系統</h1>
 
       <form class="mt-6" action="{{ route('login') }}" method="GET">
         {{-- <div>
