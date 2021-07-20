@@ -17,10 +17,10 @@ class Directory extends Model
         'phone',
         'ext',
         'email',
-        'department_id'
+        'department_id',
     ];
 
-    function department()
+    public function department()
     {
         return $this->belongsTo(Department::class);
     }

@@ -13,7 +13,7 @@ class Department extends Model
     protected $fillable = [
         'dept_name',
     ];
-    function directory()
+    public function directory()
     {
         return $this->hasMany(Directory::class);
     }

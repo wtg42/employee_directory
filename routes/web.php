@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DirectoryController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\DirectoryController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +13,7 @@ use App\Http\Controllers\DepartmentController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 // 部門頁面路由
 Route::middleware(['auth:sanctum', 'verified'])->resource('/department', DepartmentController::class);
 
@@ -23,18 +23,16 @@ Route::middleware(['auth:sanctum', 'verified'])->resource('/directory', Director
 ]]);
 
 Route::resource('/directory', DirectoryController::class, ['only' => [
-    'index'
+    'index',
 ]]);
 
 // 看 log 入口
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
-
 Route::get('/', function () {
     return view('welcome');
     // return view('auth/login');
 });
-
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
