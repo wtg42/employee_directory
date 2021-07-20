@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
-use App\Models\Directory;
 use App\Models\Department;
-use Illuminate\Support\Facades\Log;
+use App\Models\Directory;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Log;
+use Livewire\Component;
 
 class EditDirectoryForm extends Component
 {
@@ -23,10 +23,10 @@ class EditDirectoryForm extends Component
     protected $rules = [
         'chinese_name' => 'required|string|min:2',
         'english_name' => 'required|string|min:2',
-        'email'   => 'required|email',
-        'phone'   => 'required|string|min:8',
-        'ext'     => 'required|integer',
-        'dept'    => 'required',
+        'email' => 'required|email',
+        'phone' => 'required|string|min:8',
+        'ext' => 'required|integer',
+        'dept' => 'required',
     ];
 
     protected $messages = [
@@ -41,8 +41,6 @@ class EditDirectoryForm extends Component
         'ext.required' => '分機不能空白',
         'dept.required' => '請選擇部門',
     ];
-
-
 
     public function render()
     {
@@ -80,7 +78,6 @@ class EditDirectoryForm extends Component
                 'ext' => $validatedData['ext'],
                 'department_id' => $validatedData['dept'],
             ]);
-
         } catch (QueryException $e) {
             Log::error($e->getMessage());
             session()->flash('success_message', '更新失敗，信箱或姓名是否重複?(' . $e->getCode() . ')');

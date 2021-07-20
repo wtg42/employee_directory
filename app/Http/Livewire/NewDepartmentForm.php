@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
 use App\Models\Department;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Log;
+use Livewire\Component;
 
 class NewDepartmentForm extends Component
 {
@@ -43,7 +43,7 @@ class NewDepartmentForm extends Component
             $dept->save();
         } catch (QueryException $e) {
             Log::error($e->getMessage());
-            session()->flash('success_message', '新增失敗('. $e->getCode() .')。');
+            session()->flash('success_message', '新增失敗(' . $e->getCode() . ')。');
             return;
         }
 

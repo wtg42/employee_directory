@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
 use App\Models\Directory;
+use Livewire\Component;
 use Livewire\WithPagination;
 
 class DirectoryList extends Component
@@ -11,19 +11,18 @@ class DirectoryList extends Component
     // search input
     public $zhnameOrPhone;
 
-    use WithPagination;// livewire分頁用 沒加會變成reload分頁
+    use WithPagination; // livewire分頁用 沒加會變成reload分頁
 
     public function render()
     {
         $directory = new Directory;
-        // $directories = $directory->where([['chinese_name', 'like', "%{$this->title}%"]])->with('Department')->paginate(5);
-        $directories = $directory->when(!empty($this->zhnameOrPhone), function($query) {
+        $directories = $directory->when(!empty($this->zhnameOrPhone), function ($query) {
             return $query
-            ->where([['chinese_name', 'like', "%{$this->zhnameOrPhone}%"]])
-            ->orwhere([['phone', 'like', "%{$this->zhnameOrPhone}%"]]);
+                ->where([['chinese_name', 'like', "%{$this->zhnameOrPhone}%"]])
+                ->orwhere([['phone', 'like', "%{$this->zhnameOrPhone}%"]]);
         })
-        ->with('Department')
-        ->paginate(5);
+            ->with('Department')
+            ->paginate(5);
 
         return view('livewire.directory-list', ['directories' => $directories]);
     }
