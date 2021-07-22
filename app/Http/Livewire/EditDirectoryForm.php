@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Department;
 use App\Models\Directory;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
@@ -11,6 +12,7 @@ use Livewire\Component;
 class EditDirectoryForm extends Component
 {
     // 表單欄位
+    public $employee_number;
     public $chinese_name;
     public $english_name;
     public $email;
@@ -21,6 +23,7 @@ class EditDirectoryForm extends Component
 
     // form reuls 搭配 messages
     protected $rules = [
+        'employee_number' => 'required|integer',
         'chinese_name' => 'required|string|min:2',
         'english_name' => 'required|string|min:2',
         'email' => 'required|email',
@@ -30,6 +33,7 @@ class EditDirectoryForm extends Component
     ];
 
     protected $messages = [
+        'employee_number.required' => '員工編號不能空白',
         'chinese_name.required' => '姓名不能空白',
         'chinese_name.min' => '最少需要2個字',
         'english_name.required' => '姓名不能空白',
@@ -47,9 +51,15 @@ class EditDirectoryForm extends Component
         return view('livewire.edit-directory-form', ['departments' => Department::all()]);
     }
 
+    /**
+     * 欄位預設值設定
+     * @return void
+     * @throws ModelNotFoundException
+     */
     public function mount()
     {
         $directory = Directory::with('Department')->findOrFail($this->directoryID);
+        $this->employee_number = $directory->employee_number;
         $this->chinese_name = $directory->chinese_name;
         $this->english_name = $directory->english_name;
         $this->email = $directory->email;
@@ -71,6 +81,7 @@ class EditDirectoryForm extends Component
             $validatedData = $this->validate();
             // 寫入欄位
             Directory::where([['id', '=', $this->directoryID]])->update([
+                'employee_number' => $validatedData['employee_number'],
                 'chinese_name' => $validatedData['chinese_name'],
                 'english_name' => $validatedData['english_name'],
                 'email' => $validatedData['email'],
@@ -80,7 +91,7 @@ class EditDirectoryForm extends Component
             ]);
         } catch (QueryException $e) {
             Log::error($e->getMessage());
-            session()->flash('success_message', '更新失敗，信箱或姓名是否重複?(' . $e->getCode() . ')');
+            session()->flash('success_message', '更新失敗，信箱、員工編號或姓名是否重複?(' . $e->getCode() . ')');
             return;
         }
 

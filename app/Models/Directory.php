@@ -12,6 +12,7 @@ class Directory extends Model
     protected $table = 'directories';
 
     protected $fillable = [
+        'employee_number',
         'chinese_name',
         'english_name',
         'phone',

@@ -11,7 +11,13 @@
                     {{-- <input type="hidden" name="apikey" value="YOUR_ACCESS_KEY_HERE">
                     <input type="hidden" name="subject" value="New Submission from Web3Forms">
                     <input type="checkbox" name="botcheck" id="" style="display: none;"> --}}
-
+                    <div class="mb-6">
+                        <label for="employee_number" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">員工編號</label>
+                        <input wire:dirty.class="text-red-500" wire:model.lazy="employee_number" type="text" id="employee_number"
+                            placeholder="1000001"
+                            class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
+                        @error('employee_number')<span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                    </div>
                     <div class="mb-6">
                         <label for="chinese_name"
                             class="block mb-2 text-sm text-gray-600 dark:text-gray-400">中文姓名</label>

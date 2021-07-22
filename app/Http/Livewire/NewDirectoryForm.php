@@ -12,6 +12,7 @@ class NewDirectoryForm extends Component
 {
 
     // 表單欄位
+    public $employee_number;
     public $chinese_name;
     public $english_name;
     public $email;
@@ -21,6 +22,7 @@ class NewDirectoryForm extends Component
 
     // form reuls 搭配 messages
     protected $rules = [
+        'employee_number' => 'required|integer',
         'chinese_name' => 'required|string|min:2',
         'english_name' => 'required|string|min:2',
         'email' => 'required|email',
@@ -30,6 +32,7 @@ class NewDirectoryForm extends Component
     ];
 
     protected $messages = [
+        'employee_number.required' => '員工編號不能空白',
         'chinese_name.required' => '姓名不能空白',
         'chinese_name.min' => '最少需要2個字',
         'english_name.required' => '姓名不能空白',
@@ -61,6 +64,7 @@ class NewDirectoryForm extends Component
             $validatedData = $this->validate();
             // 寫入欄位
             $dirct = Directory::create([
+                'employee_number' => $validatedData['employee_number'],
                 'chinese_name' => $validatedData['chinese_name'],
                 'english_name' => $validatedData['english_name'],
                 'email' => $validatedData['email'],
@@ -71,7 +75,7 @@ class NewDirectoryForm extends Component
             $dirct->save();
         } catch (QueryException $e) {
             Log::error($e->getMessage());
-            session()->flash('success_message', '新增失敗，信箱或姓名是否重複?(' . $e->getCode() . ')');
+            session()->flash('success_message', '新增失敗，信箱、員工編號或姓名是否重複?(' . $e->getCode() . ')');
             return;
         }
 

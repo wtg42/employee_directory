@@ -12,6 +12,9 @@
             <tr>
                 <th
                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    員工編號</th>
+                <th
+                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     中文姓名</th>
                 <th
                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
@@ -40,6 +43,11 @@
             {{-- 可以改用@each('view.name.compoment', $userList, 'customer', 'view.empty.name.component') --}}
             @forelse($directories as $info)
             <tr wire:loading.class.delay="opacity-50">{{-- 長時間搜尋等待改變畫面狀態。 --}}
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/12">
+                    <p class="text-gray-900 whitespace-nowrap text-center">
+                        {{ $info->employee_number ?? 'none' }}
+                    </p>
+                </td>
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/12">
                     <p class="text-gray-900 whitespace-nowrap text-center">
                         {{ $info->chinese_name }}
