@@ -2,10 +2,10 @@
 <div class="space-y-4 rounded-t-xl overflow-hidden bg-gradient-to-r from-light-blue-50 to-light-blue-100 p-10">
     {{-- Do your work, then step back. --}}
     <div>
-        <x-jet-input wire:model.debounce.500ms="zhnameOrPhone" wire:dirty.class="text-red-500"
+        <x-jet-input wire:model.debounce.500ms="employeeNoOrzhnameOrPhone" wire:dirty.class="text-red-500"
             type="text"
             class="w-3/12 px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
-            placeholder="搜尋中文姓名或電話號碼" />
+            placeholder="輸入員工編號或中文姓名或電話號碼" />
     </div>
     <table class="min-w-full leading-normal table-auto">
         <thead>

@@ -9,17 +9,18 @@ use Livewire\WithPagination;
 class DirectoryList extends Component
 {
     // search input
-    public $zhnameOrPhone;
+    public $employeeNoOrzhnameOrPhone;
 
     use WithPagination; // livewire分頁用 沒加會變成reload分頁
 
     public function render()
     {
         $directory = new Directory;
-        $directories = $directory->when(!empty($this->zhnameOrPhone), function ($query) {
+        $directories = $directory->when(!empty($this->employeeNoOrzhnameOrPhone), function ($query) {
             return $query
-                ->where([['chinese_name', 'like', "%{$this->zhnameOrPhone}%"]])
-                ->orwhere([['phone', 'like', "%{$this->zhnameOrPhone}%"]]);
+                ->where([['chinese_name', 'like', "%{$this->employeeNoOrzhnameOrPhone}%"]])
+                ->orwhere([['phone', 'like', "%{$this->employeeNoOrzhnameOrPhone}%"]])
+                ->orwhere([['employee_number', 'like', "%{$this->employeeNoOrzhnameOrPhone}%"]]);
         })
             ->with('Department')
             ->paginate(5);
