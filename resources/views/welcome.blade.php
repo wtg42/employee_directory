@@ -9,7 +9,7 @@
 
 
     </head>
-    <body class="h-screen overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
+    <body class="h-screen overflow-hidden items-center justify-center" style="background: #edf2f7;">
     <section class="flex flex-col md:flex-row h-screen items-center">
 
   <div class="bg-indigo-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
