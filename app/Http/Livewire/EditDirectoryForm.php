@@ -23,21 +23,23 @@ class EditDirectoryForm extends Component
 
     // form reuls 搭配 messages
     protected $rules = [
-        'employee_number' => 'required|integer',
+        'employee_number' => 'required|integer|unique:directories',
         'chinese_name' => 'required|string|min:2',
         'english_name' => 'required|string|min:2',
-        'email' => 'required|email',
+        'email' => 'required|email|unique:directories',
         'phone' => 'required|string|min:8',
         'ext' => 'required|integer',
         'dept' => 'required',
     ];
 
     protected $messages = [
+        'employee_number.unique' => '員工編號已被使用',
         'employee_number.required' => '員工編號不能空白',
         'chinese_name.required' => '姓名不能空白',
         'chinese_name.min' => '最少需要2個字',
         'english_name.required' => '姓名不能空白',
         'english_name.min' => '最少需要2個字',
+        'email.unique' => 'Email已被使用',
         'email.required' => 'Email欄位不能留空',
         'email.email' => 'Email格式錯誤.',
         'phone.required' => '電話欄位不能留空',
