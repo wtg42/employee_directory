@@ -2,8 +2,12 @@
 
 namespace Tests\Feature;
 
+use App\Http\Livewire\NewDepartmentForm;
+use App\Models\Department;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Laravel\Sanctum\Sanctum;
+use Livewire\Livewire;
 use Tests\TestCase;
 
 class DepartmentTest extends TestCase
@@ -45,12 +49,18 @@ class DepartmentTest extends TestCase
 
     public function testRouteDepartmentCreateLogin()
     {
-        $response = Sanctum::actingAs(User::factory()->make());
+        $response = Sanctum::actingAs(User::factory()->create());
 
         $response = $this->get(route('department.create'));
 
         $response->assertStatus(200)->assertViewIs('dashboard-department-create');
 
         $response->assertSeeTextInOrder(['New Department Form', '新增部門', '新增']);
+
+        $_randomDepartmentName = 'department-' . Str::random(5);
+        Livewire::test(NewDepartmentForm::class)
+            ->set('dept_name', $_randomDepartmentName)
+            ->call('submitForm');
+        $this->assertTrue(Department::whereDept_name($_randomDepartmentName)->exists());
     }
 }
