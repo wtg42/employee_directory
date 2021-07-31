@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Http\Livewire\NewDirectoryForm;
+use App\Models\Department;
 use App\Models\Directory;
 use App\Models\User;
 use Laravel\Sanctum\Sanctum;
@@ -55,7 +56,7 @@ class DirectoryTest extends TestCase
             ->set('email', rand(1, 999999) . '@gmail.com')
             ->set('phone', '0' . rand(900000000, 999999999))
             ->set('ext', rand(100, 999))
-            ->set('dept', rand(1, 10))
+            ->set('dept', rand(1, Department::count()))
             ->call('submitForm');
 
         $this->assertTrue(Directory::whereEmployee_number($_testEmployeeNum)->exists());
