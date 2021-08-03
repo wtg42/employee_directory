@@ -13,6 +13,17 @@ class DirectoryList extends Component
 
     use WithPagination; // livewire分頁用 沒加會變成reload分頁
 
+    /**
+     * 重要！使用 paginate 分頁加一定要加上這組
+     * This method can be used in combination with the updating/updated
+     * lifecycle hooks to reset the page when certain component data is updated.
+     * @return void
+     */
+    public function updatingEmployeeNoOrzhnameOrPhone()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         $directory = new Directory;

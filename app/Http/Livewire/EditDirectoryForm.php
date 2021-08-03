@@ -23,10 +23,10 @@ class EditDirectoryForm extends Component
 
     // form reuls 搭配 messages
     protected $rules = [
-        'employee_number' => 'required|integer|unique:directories',
+        'employee_number' => 'required|integer',
         'chinese_name' => 'required|string|min:2',
         'english_name' => 'required|string|min:2',
-        'email' => 'required|email|unique:directories',
+        'email' => 'required|email',
         'phone' => 'required|string|min:8',
         'ext' => 'required|integer',
         'dept' => 'required',

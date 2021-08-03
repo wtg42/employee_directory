@@ -2,13 +2,14 @@
 
 namespace Tests\Feature;
 
-use App\Http\Livewire\NewDirectoryForm;
-use App\Models\Department;
-use App\Models\Directory;
-use App\Models\User;
-use Laravel\Sanctum\Sanctum;
-use Livewire\Livewire;
 use Tests\TestCase;
+use App\Models\User;
+use Livewire\Livewire;
+use App\Models\Directory;
+use App\Models\Department;
+use Laravel\Sanctum\Sanctum;
+use App\Http\Livewire\DirectoryList;
+use App\Http\Livewire\NewDirectoryForm;
 
 class DirectoryTest extends TestCase
 {
@@ -28,6 +29,20 @@ class DirectoryTest extends TestCase
         $response->assertSeeLivewire('directory-list');
 
         $response->assertSeeTextInOrder(['Directories List', '中文姓名']);
+
+        $response->assertViewIs('dashboard-directory-list');
+
+        // 跳轉編輯
+        $editID = Directory::inRandomOrder()->limit(1)->get('id')->first()['id'];
+        Livewire::test(DirectoryList::class)
+            ->assertViewIs('livewire.directory-list')
+            ->call('editFromTableRow', $editID)
+            ->assertRedirect(route("directory.edit", ["directory" => $editID]));
+
+        // remove item...
+        Livewire::test(DirectoryList::class)
+            ->assertViewIs('livewire.directory-list')
+            ->call('removeFromTableRow', $editID);
     }
 
     /**
