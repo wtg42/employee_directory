@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Http\Livewire\DepartmentList;
 use App\Http\Livewire\NewDepartmentForm;
 use App\Models\Department;
 use App\Models\User;
@@ -38,6 +39,12 @@ class DepartmentTest extends TestCase
         $response->assertStatus(200)->assertViewIs('dashboard-department-list');
 
         $response->assertSeeTextInOrder(['Departments List', '編號', '部門名稱']);
+
+        // Department list remove item
+        $randomDept = Department::inRandomOrder()->limit(1)->get('id')->first()['id'];
+        var_dump('testRouteDepartmentLogin()->' . $randomDept);
+        Livewire::test(DepartmentList::class)
+            ->call('removeFromTableRow', $randomDept);
     }
 
     public function testRouteDepartmentCreateNoneLogin()

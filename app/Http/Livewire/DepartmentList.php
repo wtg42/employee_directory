@@ -18,7 +18,7 @@ class DepartmentList extends Component
 
     public function removeFromTableRow($removeID)
     {
-        $contactUs = Department::find($removeID);
-        $contactUs->delete();
+        $dept = Department::find($removeID);
+        $dept->delete();
     }
 }
